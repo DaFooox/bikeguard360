@@ -1,23 +1,28 @@
 'use strict';
 
-const path = require('path');
-const express = require('express');
+const config = require('./config');
+const { openDatabase } = require('./db');
+const { createApp } = require('./app');
 
-const PORT = process.env.PORT || 3000;
-const app = express();
+const db = openDatabase();
+const app = createApp(db);
 
-app.use(express.json());
-app.use(express.static(path.join(__dirname, '..', 'public')));
+// Remove expired sessions once an hour
+setInterval(() => {
+  db.prepare('DELETE FROM sessions WHERE expires_at < ?').run(new Date().toISOString());
+}, 3600 * 1000).unref();
 
-// Health check – later also used by the ESP32 to verify server reachability.
-app.get('/api/health', (req, res) => {
-  res.json({ status: 'ok', service: 'bikeguard360', time: new Date().toISOString() });
+const server = app.listen(config.port, () => {
+  console.log(`BikeGuard360 server running at http://localhost:${config.port}`);
+  console.log(`Database: ${config.dbPath}`);
 });
 
-app.use('/api', (req, res) => {
-  res.status(404).json({ error: 'Not found' });
-});
-
-app.listen(PORT, () => {
-  console.log(`BikeGuard360 server running at http://localhost:${PORT}`);
-});
+function shutdown() {
+  server.close(() => {
+    db.close();
+    process.exit(0);
+  });
+  setTimeout(() => process.exit(0), 2000).unref();
+}
+process.on('SIGINT', shutdown);
+process.on('SIGTERM', shutdown);

@@ -6,13 +6,18 @@
   "private": true,
   "scripts": {
     "start": "node server/index.js",
-    "dev": "node --watch server/index.js"
+    "dev": "node --watch server/index.js",
+    "seed": "node scripts/seed.js",
+    "simulate": "node scripts/simulate.js",
+    "test": "node --test test/*.test.js"
   },
   "engines": {
-    "node": ">=18"
+    "node": ">=20.12"
   },
   "license": "UNLICENSED",
   "dependencies": {
-    "express": "^4.22.3"
+    "better-sqlite3": "^13.0.3",
+    "express": "^4.22.3",
+    "leaflet": "^1.9.4"
   }
 }
