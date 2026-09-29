@@ -70,15 +70,18 @@ const state = {
 let map = null;
 const layers = {};
 
-function initMap() {
+async function initMap() {
   if (!window.L) {
-    $('map').innerHTML = '<p class="map-fallback">Karte konnte nicht geladen werden (keine Internetverbindung?).</p>';
+    $('map').innerHTML = '<p class="map-fallback">Karte konnte nicht geladen werden.</p>';
     return;
   }
+  const { map: tiles } = await api('/config');
   map = L.map('map', { zoomControl: true }).setView([52.52, 13.405], 13);
-  L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-    maxZoom: 19,
-    attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>',
+  L.tileLayer(tiles.tile_url, {
+    maxZoom: tiles.max_zoom,
+    attribution: tiles.attribution,
+    // Tile servers like OpenStreetMap reject requests without a Referer
+    referrerPolicy: 'strict-origin-when-cross-origin',
   }).addTo(map);
   layers.track = L.polyline([], { color: '#0f9d74', weight: 4, opacity: 0.85 }).addTo(map);
   layers.alarms = L.layerGroup().addTo(map);
@@ -559,7 +562,7 @@ function bindEvents() {
 (async function init() {
   const { user } = await api('/auth/me');
   $('user-name').textContent = user.name;
-  initMap();
+  await initMap();
   bindEvents();
   await loadDevices();
   await Promise.all([selectDevice(state.selectedId), loadNotifications()]);

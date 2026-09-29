@@ -2,6 +2,7 @@
 
 const path = require('path');
 const express = require('express');
+const config = require('./config');
 const { loadUser, requireUser, requireDevice } = require('./middleware/auth');
 
 const PUBLIC = path.join(__dirname, '..', 'public');
@@ -11,7 +12,7 @@ function createApp(db) {
   app.disable('x-powered-by');
   app.use(express.json({ limit: '1mb' }));
   app.use((req, res, next) => {
-    res.set({ 'X-Content-Type-Options': 'nosniff', 'Referrer-Policy': 'same-origin', 'X-Frame-Options': 'DENY' });
+    res.set({ 'X-Content-Type-Options': 'nosniff', 'Referrer-Policy': 'strict-origin-when-cross-origin', 'X-Frame-Options': 'DENY' });
     next();
   });
 
@@ -22,6 +23,10 @@ function createApp(db) {
 
   app.get('/api/health', (req, res) => {
     res.json({ status: 'ok', service: 'bikeguard360', time: new Date().toISOString() });
+  });
+  // Public client configuration (map tiles)
+  app.get('/api/config', (req, res) => {
+    res.json({ map: { tile_url: config.tileUrl, attribution: config.tileAttribution, max_zoom: config.tileMaxZoom } });
   });
   app.use('/api/auth', require('./routes/auth')(db));
   app.use('/api/devices', requireUser, require('./routes/devices')(db));

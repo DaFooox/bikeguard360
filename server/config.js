@@ -19,6 +19,13 @@ module.exports = {
   sessionTtlHours: num(process.env.SESSION_TTL_HOURS, 168),
   offlineAfterMin: num(process.env.OFFLINE_AFTER_MIN, 15),
   ntfyUrl: process.env.NTFY_URL || '',
+  // Map tiles. The OpenStreetMap servers require a Referer header (see
+  // https://operations.osmfoundation.org/policies/tiles/) – for heavier use
+  // switch to another provider via TILE_URL.
+  tileUrl: process.env.TILE_URL || 'https://tile.openstreetmap.org/{z}/{x}/{y}.png',
+  tileAttribution: process.env.TILE_ATTRIBUTION ||
+    '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>-Mitwirkende',
+  tileMaxZoom: num(process.env.TILE_MAX_ZOOM, 19),
   // Minimum time between two alarms of the same type for one device
   alarmCooldownMin: 5,
   lowBatteryPercent: 15,

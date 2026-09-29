@@ -243,6 +243,8 @@ Umgebungsvariablen (oder eine `.env`-Datei, siehe [`.env.example`](.env.example)
 | `DB_PATH` | `./data/bikeguard360.db` | Pfad der SQLite-Datenbank |
 | `SESSION_TTL_HOURS` | `168` | Gültigkeit einer Anmeldung |
 | `OFFLINE_AFTER_MIN` | `15` | Ab wann ein Gerät als offline gilt |
+| `TILE_URL` | OpenStreetMap | Kachel-Server der Karte, z. B. `https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}.png` |
+| `TILE_ATTRIBUTION` | OpenStreetMap-Hinweis | Quellenangabe unten rechts in der Karte (Pflicht beim jeweiligen Anbieter) |
 | `NTFY_URL` | – | Optional: Alarme zusätzlich als Push über [ntfy](https://ntfy.sh) senden, z. B. `https://ntfy.sh/mein-geheimes-thema` |
 
 ## Projektstruktur
