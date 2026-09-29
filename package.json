@@ -5,18 +5,17 @@
   "main": "server/index.js",
   "private": true,
   "scripts": {
-    "start": "node server/index.js",
-    "dev": "node --watch server/index.js",
-    "seed": "node scripts/seed.js",
+    "start": "node --experimental-sqlite --disable-warning=ExperimentalWarning server/index.js",
+    "dev": "node --experimental-sqlite --disable-warning=ExperimentalWarning --watch server/index.js",
+    "seed": "node --experimental-sqlite --disable-warning=ExperimentalWarning scripts/seed.js",
     "simulate": "node scripts/simulate.js",
-    "test": "node --test test/*.test.js"
+    "test": "node --experimental-sqlite --disable-warning=ExperimentalWarning --test test/*.test.js"
   },
   "engines": {
-    "node": ">=20.12"
+    "node": ">=22.5"
   },
   "license": "UNLICENSED",
   "dependencies": {
-    "better-sqlite3": "^13.0.3",
     "express": "^4.22.3",
     "leaflet": "^1.9.4"
   }

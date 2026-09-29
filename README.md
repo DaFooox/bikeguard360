@@ -83,7 +83,7 @@ Da ein erheblicher Teil der Fälle nicht angezeigt wird, ist von einer deutlich 
 
 ## Schnellstart
 
-**Voraussetzungen:** Node.js ≥ 20.12
+**Voraussetzungen:** Node.js ≥ 22.5 – sonst nichts. Die Datenbank nutzt das in Node.js eingebaute SQLite (`node:sqlite`), es muss also nichts kompiliert werden (keine Visual-Studio-Build-Tools unter Windows nötig).
 
 ```bash
 npm install
@@ -208,7 +208,7 @@ Felder eines Messwerts: `ts` (ISO-Zeit oder Unix-Sekunden, optional), `accel.x/y
 
 ## Datenbank
 
-SQLite über [better-sqlite3](https://github.com/WiseLibs/better-sqlite3). Das Schema steht in [`server/schema.sql`](server/schema.sql) und wird beim Start automatisch angelegt.
+SQLite über das in Node.js eingebaute Modul [`node:sqlite`](https://nodejs.org/api/sqlite.html) – ohne native Abhängigkeiten. Unter Node.js 22.5–22.12 ist dafür der Schalter `--experimental-sqlite` nötig; die npm-Skripte setzen ihn automatisch, daher den Server immer über `npm start` / `npm run seed` starten. Das Schema steht in [`server/schema.sql`](server/schema.sql) und wird beim Start automatisch angelegt.
 
 | Tabelle | Inhalt |
 |---|---|
