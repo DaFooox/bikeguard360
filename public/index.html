@@ -1,0 +1,220 @@
+<!doctype html>
+<html lang="de">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>BikeGuard360 – Diebstahlschutz für dein Fahrrad</title>
+  <meta name="description" content="BikeGuard360 erkennt Diebstahlversuche an deinem Fahrrad, alarmiert dich sofort und zeigt dir jederzeit den Standort.">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <header class="site-header">
+    <div class="container nav">
+      <a href="#" class="logo" aria-label="BikeGuard360 Startseite">
+        <svg viewBox="0 0 32 32" width="28" height="28" aria-hidden="true">
+          <circle cx="16" cy="16" r="14" fill="none" stroke="currentColor" stroke-width="2.5"/>
+          <path d="M16 7v9l6 4" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"/>
+        </svg>
+        <span>BikeGuard<strong>360</strong></span>
+      </a>
+      <button class="nav-toggle" aria-label="Menü öffnen" aria-expanded="false">☰</button>
+      <nav class="nav-links">
+        <a href="#problem">Problem</a>
+        <a href="#funktion">So funktioniert's</a>
+        <a href="#features">Funktionen</a>
+        <a href="#system">System</a>
+        <a href="/dashboard" class="btn btn-small">Zum Dashboard</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <!-- Hero -->
+    <section class="hero">
+      <div class="container hero-grid">
+        <div>
+          <p class="eyebrow">Erkennen · Melden · Wiederfinden</p>
+          <h1>Dein Fahrrad meldet sich, <span class="accent">bevor es weg ist.</span></h1>
+          <p class="lead">
+            BikeGuard360 ist ein kompaktes Gerät für dein Fahrrad, das Diebstahlversuche
+            selbstständig erkennt, dich sofort benachrichtigt und den Standort deines Rads
+            danach fortlaufend verfügbar macht.
+          </p>
+          <div class="hero-actions">
+            <a href="/dashboard" class="btn">Standort ansehen</a>
+            <a href="#funktion" class="btn btn-ghost">Wie es funktioniert</a>
+          </div>
+          <p class="status-line"><span class="dot" id="server-dot"></span><span id="server-status">Serverstatus wird geprüft …</span></p>
+        </div>
+        <div class="hero-card" aria-hidden="true">
+          <div class="alert-card">
+            <div class="alert-head">
+              <span class="badge badge-alarm">Alarm</span>
+              <span class="muted">gerade eben</span>
+            </div>
+            <p class="alert-title">Erschütterung erkannt</p>
+            <p class="muted">Dein Fahrrad wurde bewegt, während es scharf geschaltet war.</p>
+            <div class="map">
+              <svg viewBox="0 0 300 160" preserveAspectRatio="none">
+                <path d="M0 40 H300 M0 110 H300 M70 0 V160 M190 0 V160" class="street"/>
+                <path d="M40 130 L70 110 L130 110 L190 70 L240 40" class="track"/>
+                <circle cx="240" cy="40" r="7" class="pin"/>
+                <circle cx="240" cy="40" r="16" class="pin-pulse"/>
+              </svg>
+            </div>
+            <div class="alert-meta">
+              <span>Akku 82 %</span><span>GPS aktiv</span><span>WLAN verbunden</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Problem -->
+    <section id="problem" class="section">
+      <div class="container">
+        <h2>Fahrraddiebstahl ist ein Massendelikt</h2>
+        <p class="section-lead">
+          Für Täter ist das Risiko gering, für Betroffene bedeutet ein Diebstahl meist den
+          endgültigen Verlust. Mechanische Schlösser allein reichen nicht aus.
+        </p>
+        <div class="stats">
+          <div class="stat">
+            <span class="stat-value">≈ 214.000</span>
+            <span class="stat-label">angezeigte Fahrraddiebstähle in Deutschland 2025 – die Dunkelziffer liegt deutlich höher</span>
+          </div>
+          <div class="stat">
+            <span class="stat-value">≈ 11 %</span>
+            <span class="stat-label">Aufklärungsquote – nur etwa jeder neunte Fall wird aufgeklärt</span>
+          </div>
+          <div class="stat">
+            <span class="stat-value">1.270 €</span>
+            <span class="stat-label">durchschnittlicher Versicherungsschaden je gestohlenem Rad – ein neuer Höchststand</span>
+          </div>
+          <div class="stat">
+            <span class="stat-value">&gt; 340 Mio. €</span>
+            <span class="stat-label">geschätzter bundesweiter Jahresschaden inkl. nicht versicherter Räder</span>
+          </div>
+        </div>
+        <p class="source">Quellen: Polizeiliche Kriminalstatistik 2025, Angaben der deutschen Versicherer (2025).</p>
+      </div>
+    </section>
+
+    <!-- How it works -->
+    <section id="funktion" class="section section-alt">
+      <div class="container">
+        <h2>So funktioniert BikeGuard360</h2>
+        <p class="section-lead">Statt nur abzuschrecken, setzt BikeGuard360 auf frühzeitige Meldung und Nachverfolgbarkeit.</p>
+        <ol class="steps">
+          <li>
+            <span class="step-num">1</span>
+            <h3>Scharf schalten</h3>
+            <p>Du stellst dein Rad ab und aktivierst den Schutz. Der Sensor überwacht ab jetzt jede Bewegung.</p>
+          </li>
+          <li>
+            <span class="step-num">2</span>
+            <h3>Erschütterung erkennen</h3>
+            <p>Registriert der Beschleunigungssensor eine ungewöhnliche Erschütterung, wertet das Gerät dies als möglichen Diebstahlversuch.</p>
+          </li>
+          <li>
+            <span class="step-num">3</span>
+            <h3>Daten übertragen</h3>
+            <p>Der ESP32 sendet Sensor- und GPS-Daten per WLAN an den Server, der sie anhand definierter Schwellenwerte auswertet und speichert.</p>
+          </li>
+          <li>
+            <span class="step-num">4</span>
+            <h3>Alarm &amp; Ortung</h3>
+            <p>Im Alarmfall wirst du sofort benachrichtigt und siehst Standort und Bewegungsverlauf live in der Weboberfläche.</p>
+          </li>
+        </ol>
+      </div>
+    </section>
+
+    <!-- Features -->
+    <section id="features" class="section">
+      <div class="container">
+        <h2>Funktionen</h2>
+        <div class="features">
+          <article class="feature">
+            <div class="icon">📳</div>
+            <h3>Erschütterungserkennung</h3>
+            <p>Beschleunigungssensor erkennt Bewegung und Manipulation am abgestellten Rad.</p>
+          </article>
+          <article class="feature">
+            <div class="icon">🔔</div>
+            <h3>Sofortige Benachrichtigung</h3>
+            <p>Der Server löst im Alarmfall unmittelbar eine Meldung an dich aus.</p>
+          </article>
+          <article class="feature">
+            <div class="icon">📍</div>
+            <h3>GPS-Ortung</h3>
+            <p>Aktueller Standort des Fahrrads, fortlaufend aktualisiert.</p>
+          </article>
+          <article class="feature">
+            <div class="icon">🗺️</div>
+            <h3>Bewegungsverlauf</h3>
+            <p>Alle Positionen werden gespeichert – so lässt sich der Weg des Rads nachvollziehen.</p>
+          </article>
+          <article class="feature">
+            <div class="icon">📊</div>
+            <h3>Gerätestatus</h3>
+            <p>Scharf/unscharf, Verbindung und letzte Meldung auf einen Blick.</p>
+          </article>
+          <article class="feature">
+            <div class="icon">🛡️</div>
+            <h3>Robustes Gehäuse</h3>
+            <p>Kompakt am Rahmen montierbar und gegen Witterung geschützt.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- System -->
+    <section id="system" class="section section-alt">
+      <div class="container">
+        <h2>Systemaufbau</h2>
+        <p class="section-lead">Vier aufeinander abgestimmte Komponenten bilden das Gesamtsystem.</p>
+        <div class="flow" role="img" aria-label="Datenfluss: Sensoren an ESP32, per WLAN an Server mit Datenbank, von dort an Weboberfläche und Benachrichtigung">
+          <div class="flow-node">
+            <strong>Hardware</strong>
+            <span>Beschleunigungssensor + GPS-Modul im Gehäuse</span>
+          </div>
+          <div class="flow-arrow">→</div>
+          <div class="flow-node">
+            <strong>Firmware (ESP32)</strong>
+            <span>Erfassung, Alarmlogik, WLAN-Übertragung</span>
+          </div>
+          <div class="flow-arrow">→</div>
+          <div class="flow-node">
+            <strong>Server &amp; Datenbank</strong>
+            <span>Node.js-Auswertung, Schwellenwerte, Speicherung, Alarme</span>
+          </div>
+          <div class="flow-arrow">→</div>
+          <div class="flow-node">
+            <strong>Weboberfläche</strong>
+            <span>Standort, Verlauf und Gerätestatus für Eigentümer</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CTA -->
+    <section class="section cta">
+      <div class="container cta-inner">
+        <h2>Behalte dein Fahrrad im Blick.</h2>
+        <p>Melde dich an und sieh dir Standort, Verlauf und Status deines BikeGuard360 an.</p>
+        <a href="/dashboard" class="btn">Zum Dashboard</a>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-inner">
+      <span>© <span id="year">2026</span> BikeGuard360</span>
+      <span class="muted">Projekt: Diebstahlerkennung &amp; GPS-Ortung für Fahrräder</span>
+    </div>
+  </footer>
+
+  <script src="js/main.js"></script>
+</body>
+</html>

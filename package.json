@@ -1,0 +1,18 @@
+{
+  "name": "bikeguard360",
+  "version": "0.1.0",
+  "description": "BikeGuard360 – Diebstahlerkennung und GPS-Ortung für Fahrräder (ESP32 + Node.js-Server + Weboberfläche)",
+  "main": "server/index.js",
+  "private": true,
+  "scripts": {
+    "start": "node server/index.js",
+    "dev": "node --watch server/index.js"
+  },
+  "engines": {
+    "node": ">=18"
+  },
+  "license": "UNLICENSED",
+  "dependencies": {
+    "express": "^4.22.3"
+  }
+}
